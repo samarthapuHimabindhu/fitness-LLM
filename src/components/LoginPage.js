@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Ensure this is imported
+import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -13,8 +13,8 @@ const LoginPage = ({ onLogin }) => {
       const res = await axios.post('http://localhost:5000/login', { email, password });
       if (res.data.success) {
         localStorage.setItem('username', res.data.username);
-        onLogin(); // Call the onLogin function passed as a prop
-        navigate('/videos'); // Navigate to videos page
+        onLogin(); 
+        navigate('/videos'); 
       } else {
         alert(res.data.message);
       }
